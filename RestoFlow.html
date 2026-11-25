@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RestoFlow — Le logiciel de gestion de restaurant qui fait tourner la salle</title>
+<meta name="description" content="Gestion de salle, prise de commandes sur terminal, tickets cuisine en temps réel, supervision des terminaux et vue d'ensemble administrateur. Le tout dans une seule application." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style/style.css">
+
+</head>
+<body>
+
+<!-- ============================ NAVBAR ============================ -->
+<header class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 2v7c0 1.1.9 2 2 2h1a2 2 0 0 0 2-2V2"/>
+            <path d="M5 2v20"/>
+            <path d="M17 2c-1.7 0-3 1.8-3 4s.8 4 3 4v12"/>
+          </svg>
+        </span>
+        RestoFlow
+      </a>
+
+      <nav class="nav-links">
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#produit">Le produit</a>
+        <a href="#comment">Déploiement</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-ghost">Nous contacter</a>
+        <button class="btn btn-primary" data-open-plan="pro">Essai gratuit</button>
+        <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#fonctionnalites">Fonctionnalités</a>
+  <a href="#produit">Le produit</a>
+  <a href="#comment">Déploiement</a>
+  <a href="#tarifs">Tarifs</a>
+  <a href="#faq">FAQ</a>
+  <button class="btn btn-primary" data-open-plan="pro">Demander une démo</button>
+</div>
+
+<main>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy reveal">
+        <span class="eyebrow"><span class="dot"></span>Logiciel de gestion de restaurant</span>
+        <h1>Votre salle, votre cuisine et votre équipe <span class="grad">enfin synchronisées.</span></h1>
+        <p class="lead">
+          RestoFlow relie le plan de salle, les terminaux des serveurs et l'écran cuisine en temps réel.
+          Une commande prise en salle s'affiche instantanément en cuisine — et vous, vous suivez tout
+          depuis une vue d'ensemble claire.
+        </p>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary" data-open-plan="pro">
+            Démarrer l'essai gratuit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <a href="#produit" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.5l5.5 3.5L10 15.5z" fill="currentColor" stroke="none"/></svg>
+            Voir la démo
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 14 jours offerts</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Sans engagement</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Fonctionne hors-ligne</span>
+        </div>
+      </div>
+
+      <div class="mockup reveal" style="--d:180ms">
+        <div class="app-window">
+          <div class="app-bar">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="app-bar-title">RestoFlow · Vue d'ensemble</span>
+            <span class="app-bar-live"><i></i> Temps réel</span>
+          </div>
+          <div class="app-body">
+            <aside class="app-side">
+              <div class="side-item active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg>
+              </div>
+              <div class="side-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v4H4z"/><path d="M4 12h16v4H4z"/><path d="M4 20h10"/></svg>
+              </div>
+              <div class="side-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M6 8h12"/><path d="M6 16h12"/></svg>
+              </div>
+              <div class="side-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 7 19.4a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0-1.2-2.9H1a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 2.6 7a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 7 2.6h.1A1.7 1.7 0 0 0 8.3 1V1a2 2 0 1 1 4 0v.1A1.7 1.7 0 0 0 15 2.6a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.5 1.1h.1a2 2 0 1 1 0 4H21a1.7 1.7 0 0 0-1.6 1.2z"/></svg>
+              </div>
+            </aside>
+
+            <div class="app-main">
+              <div class="stat-row">
+                <div class="stat">
+                  <span class="stat-label">Couverts</span>
+                  <strong>86</strong> <small>+12%</small>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Temps moyen</span>
+                  <strong>14'</strong> <small>-3'</small>
+                </div>
+                <div class="stat">
+                  <span class="stat-label">Tickets en attente</span>
+                  <strong>5</strong> <small class="warn">2 en retard</small>
+                </div>
+              </div>
+
+              <div class="floor-title">
+                Plan de salle · Service du soir
+                <em>18 tables</em>
+              </div>
+
+              <div class="floor">
+                <div class="table busy">T1</div>
+                <div class="table busy">T2</div>
+                <div class="table free">T3</div>
+                <div class="table late">T4</div>
+                <div class="table free">T5</div>
+                <div class="table busy">T6</div>
+                <div class="table free">T7</div>
+                <div class="table busy">T8</div>
+                <div class="table free">T9</div>
+                <div class="table busy">T10</div>
+                <div class="table free">T11</div>
+                <div class="table late">T12</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-card fc-1">
+          <span class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </span>
+          <span class="fc-txt">
+            <strong>Ticket envoyé en cuisine</strong>
+            <span>Table 4 · 0,3 s</span>
+          </span>
+        </div>
+
+        <div class="floating-card fc-2">
+          <span class="ic">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v4l3 2"/><circle cx="12" cy="12" r="9"/></svg>
+          </span>
+          <span class="fc-txt">
+            <strong>4 terminaux connectés</strong>
+            <span>Tous opérationnels</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONFIANCE ============================ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-inner reveal">
+      <p>Ils font tourner leur service avec RestoFlow</p>
+      <div class="trust-logos">
+        <span>Le Bistrot Moderne</span>
+        <span>Maison Kora</span>
+        <span>Trattoria Nove</span>
+        <span>Le Comptoir</span>
+        <span>Atelier Sucré</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FONCTIONNALITÉS ============================ -->
+<section class="section" id="fonctionnalites">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Tout-en-un</span>
+      <h2>Une seule application pour tout votre service</h2>
+      <p>Fini les cahiers, les allers-retours et les tickets perdus. Chaque module communique avec les autres, en temps réel.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <article class="feature reveal">
+        <div class="feature-icon fi-orange">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.8"/><rect x="14" y="3" width="7" height="7" rx="1.8"/><rect x="3" y="14" width="7" height="7" rx="1.8"/><rect x="14" y="14" width="7" height="7" rx="1.8"/></svg>
+        </div>
+        <h3>Gestion de salle</h3>
+        <p>Un plan de salle interactif qui reflète l'état réel de votre restaurant à la seconde.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tables libres, occupées, réservées</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Chrono d'occupation par table</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Plan éditable en glisser-déposer</li>
+        </ul>
+      </article>
+
+      <article class="feature reveal" style="--d:80ms">
+        <div class="feature-icon fi-blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 18v3"/></svg>
+        </div>
+        <h3>Prise de commandes</h3>
+        <p>Vos serveurs prennent les commandes sur terminal tactile, directement à la table.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Carte et menus configurables</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Notes, allergies, cuissons</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Envoi direct en cuisine</li>
+        </ul>
+      </article>
+
+      <article class="feature reveal" style="--d:160ms">
+        <div class="feature-icon fi-rose">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16v18l-3-2-3 2-3-2-3 2-3-2z"/><path d="M8 8h8M8 12h5"/></svg>
+        </div>
+        <h3>Tickets cuisine</h3>
+        <p>Un écran cuisine (KDS) qui remplace le papier et fluidifie le passage de la salle au passe.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Colonnes : en attente / en cours / prêt</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Alertes visuelles de retard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Gestion des plats envoyés</li>
+        </ul>
+      </article>
+
+      <article class="feature reveal" style="--d:40ms">
+        <div class="feature-icon fi-violet">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/><circle cx="12" cy="10" r="2"/></svg>
+        </div>
+        <h3>Gestion des terminaux</h3>
+        <p>Ajoutez, appairez et supervisez tous vos appareils depuis un seul tableau de bord.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Appairage par QR code</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> État de connexion en direct</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Mises à jour centralisées</li>
+        </ul>
+      </article>
+
+      <article class="feature reveal" style="--d:120ms">
+        <div class="feature-icon fi-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </div>
+        <h3>Vue administrateur</h3>
+        <p>Pilotez votre restaurant avec des indicateurs clairs, mis à jour en continu.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Chiffre d'affaires du jour</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Temps de service et plats phares</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Performance par serveur</li>
+        </ul>
+      </article>
+
+      <article class="feature reveal" style="--d:200ms">
+        <div class="feature-icon fi-slate">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a7 7 0 0 1 14 0"/><path d="M2 9a11 11 0 0 1 20 0"/><circle cx="12" cy="19" r="1.6" fill="currentColor" stroke="none"/><path d="M3 3l18 18" stroke-width="2"/></svg>
+        </div>
+        <h3>Mode hors-ligne</h3>
+        <p>Une coupure Wi-Fi ? Le service continue. Tout se resynchronise automatiquement au retour du réseau.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Aucune commande perdue</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Synchronisation automatique</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Sauvegarde cloud quotidienne</li>
+        </ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRODUIT / ONGLETS ============================ -->
+<section class="section showcase" id="produit">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Le produit</span>
+      <h2>Regardez-le tourner</h2>
+      <p>Chaque écran a été pensé pour le terrain : rapide, lisible, utilisable avec les doigts mouillés et en plein coup de feu.</p>
+    </div>
+
+    <div class="tabs reveal">
+      <button class="tab active" data-tab="salle">Gestion de salle</button>
+      <button class="tab" data-tab="commande">Prise de commandes</button>
+      <button class="tab" data-tab="cuisine">Tickets cuisine</button>
+      <button class="tab" data-tab="terminaux">Terminaux</button>
+      <button class="tab" data-tab="admin">Administrateur</button>
+    </div>
+
+    <div class="panel active" id="panel-salle">
+      <div class="panel-grid">
+        <div class="panel-copy">
+          <h3>La salle sous vos yeux, en permanence</h3>
+          <p>Chaque table affiche son état et son temps d'occupation. D'un coup d'œil, vous savez où placer un client, quelle table risque de s'impatienter et où en est le service.</p>
+          <ul class="panel-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Codes couleurs instantanés</strong><span>Libre, occupée, réservée ou en retard de service.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Plan personnalisable</strong><span>Disposez vos tables comme dans la réalité, en glisser-déposer.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Multi-salles</strong><span>Terrasse, étage, salon privé : chaque espace a son plan.</span></div></li>
+          </ul>
+        </div>
+        <div class="panel-visual">
+          <div class="pv-head">
+            <h4>Plan de salle — Service en cours</h4>
+            <span class="pv-badge">18 tables</span>
+          </div>
+          <div class="floor" style="grid-template-columns:repeat(4,1fr)">
+            <div class="table busy">T1</div><div class="table busy">T2</div>
+            <div class="table free">T3</div><div class="table late">T4</div>
+            <div class="table free">T5</div><div class="table busy">T6</div>
+            <div class="table free">T7</div><div class="table busy">T8</div>
+            <div class="table free">T9</div><div class="table busy">T10</div>
+            <div class="table free">T11</div><div class="table late">T12</div>
+            <div class="table free">T13</div><div class="table busy">T14</div>
+            <div class="table free">T15</div><div class="table free">T16</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-commande">
+      <div class="panel-grid">
+        <div class="panel-copy">
+          <h3>La commande part en cuisine avant même de quitter la table</h3>
+          <p>Le serveur sélectionne la table, compose la commande sur son terminal et l'envoie. Plus de passage à la caisse, plus de ticket manuscrit illisible.</p>
+          <ul class="panel-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Interface tactile rapide</strong><span>Trois taps pour ajouter un plat, une boisson ou un menu.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Modifications à la volée</strong><span>Ajouter, annuler ou décaler un plat sans casser la commande.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Carte toujours à jour</strong><span>Plats épuisés désactivés en un clic depuis l'administration.</span></div></li>
+          </ul>
+        </div>
+        <div class="panel-visual">
+          <div class="pv-head">
+            <h4>Table 12 — Commande en cours</h4>
+            <span class="pv-badge warn">Non envoyée</span>
+          </div>
+          <div class="orders-list">
+            <div class="order-row"><span class="num">1</span><span class="name">Burrata di Puglia<small>Sans basilic · 1×</small></span><span class="price">12,00 €</span></div>
+            <div class="order-row"><span class="num">2</span><span class="name">Risotto aux cèpes<small>Cuisson al dente · 2×</small></span><span class="price">38,00 €</span></div>
+            <div class="order-row"><span class="num">3</span><span class="name">Verre de Chianti<small>Rouge · 2×</small></span><span class="price">14,00 €</span></div>
+            <div class="order-row"><span class="num">4</span><span class="name">Tiramisu maison<small>À servir en fin de repas · 2×</small></span><span class="price">16,00 €</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-cuisine">
+      <div class="panel-grid">
+        <div class="panel-copy">
+          <h3>Un écran cuisine qui remplace le papier</h3>
+          <p>Les tickets arrivent organisés par colonnes, avec le temps écoulé et des alertes visuelles quand un plat prend trop de temps. Le passe respire.</p>
+          <ul class="panel-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Colonnes de travail</strong><span>En attente, en préparation, prêt à servir.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Alertes de retard</strong><span>Le ticket change de couleur au-delà du seuil défini.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Écran tactile ou TV</strong><span>Fonctionne sur tablette en cuisine comme sur grand écran.</span></div></li>
+          </ul>
+        </div>
+        <div class="panel-visual">
+          <div class="pv-head">
+            <h4>Cuisine — Passe</h4>
+            <span class="pv-badge warn">2 en retard</span>
+          </div>
+          <div class="kds">
+            <div class="kds-col">
+              <h5>En attente</h5>
+              <div class="ticket"><b>Table 4 · 12:42</b><span>2× Risotto aux cèpes</span><span>1× Burrata</span></div>
+              <div class="ticket"><b>Table 9 · 12:44</b><span>1× Tartare de bœuf</span></div>
+            </div>
+            <div class="kds-col">
+              <h5>En cours</h5>
+              <div class="ticket warn"><b>Table 2 · 12:31</b><span>1× Filet de bar</span><span>2× Légumes rôtis</span></div>
+              <div class="ticket"><b>Table 7 · 12:38</b><span>3× Pizza Regina</span></div>
+            </div>
+            <div class="kds-col">
+              <h5>Prêt</h5>
+              <div class="ticket"><b>Table 1 · 12:28</b><span>2× Carpaccio</span></div>
+              <div class="ticket late"><b>Table 11 · 12:20</b><span>1× Entrecôte</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-terminaux">
+      <div class="panel-grid">
+        <div class="panel-copy">
+          <h3>Tous vos appareils, un seul tableau de bord</h3>
+          <p>Terminaux de salle, tablettes cuisine, imprimantes : appairez-les en scannant un QR code et suivez leur état en direct. Vous savez immédiatement si un appareil décroche.</p>
+          <ul class="panel-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Appairage par QR code</strong><span>Un nouvel appareil est opérationnel en moins d'une minute.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Supervision en direct</strong><span>Batterie, connexion, version logicielle : tout est visible.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Droits par rôle</strong><span>Serveur, cuisine, manager : chacun voit ce qui le concerne.</span></div></li>
+          </ul>
+        </div>
+        <div class="panel-visual">
+          <div class="pv-head">
+            <h4>Terminaux connectés</h4>
+            <span class="pv-badge">4 en ligne</span>
+          </div>
+          <div class="term-grid">
+            <div class="term"><span class="dotst"></span><span class="term-txt"><strong>Terminal salle — 01</strong><span>Serveur · Actif · 92%</span></span></div>
+            <div class="term"><span class="dotst"></span><span class="term-txt"><strong>Terminal salle — 02</strong><span>Serveur · Actif · 78%</span></span></div>
+            <div class="term"><span class="dotst"></span><span class="term-txt"><strong>Écran cuisine</strong><span>KDS · Actif · Secteur chaud</span></span></div>
+            <div class="term"><span class="dotst warn"></span><span class="term-txt"><strong>Imprimante bar</strong><span>Hors-ligne · Reconnexion…</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-admin">
+      <div class="panel-grid">
+        <div class="panel-copy">
+          <h3>Votre restaurant en un coup d'œil</h3>
+          <p>Le tableau de bord administrateur rassemble les chiffres qui comptent : couverts, panier moyen, temps de service, plats les plus vendus et performance de l'équipe.</p>
+          <ul class="panel-list">
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Indicateurs du jour</strong><span>Chiffre d'affaires, couverts, ticket moyen, temps de service.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Analyse des ventes</strong><span>Plats phares, marges, produits épuisés.</span></div></li>
+            <li><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><div><strong>Export comptable</strong><span>Rapports par jour, semaine ou mois, exportables en un clic.</span></div></li>
+          </ul>
+        </div>
+        <div class="panel-visual">
+          <div class="pv-head">
+            <h4>Chiffre d'affaires — 7 derniers jours</h4>
+            <span class="pv-badge">+18%</span>
+          </div>
+          <div class="bars">
+            <div class="bar alt" style="height:42%"></div>
+            <div class="bar alt" style="height:58%"></div>
+            <div class="bar alt" style="height:50%"></div>
+            <div class="bar" style="height:74%"></div>
+            <div class="bar" style="height:88%"></div>
+            <div class="bar" style="height:100%"></div>
+            <div class="bar alt" style="height:64%"></div>
+          </div>
+          <div class="bar-labels">
+            <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================ DÉPLOIEMENT ============================ -->
+<section class="section" id="comment">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Déploiement</span>
+      <h2>Opérationnel en une journée</h2>
+      <p>Pas de projet informatique interminable. Vous installez, vous configurez, vous servez.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Créez votre plan de salle</h3>
+        <p>Disposez vos tables en glisser-déposer, nommez vos espaces et définissez votre carte.</p>
+      </div>
+      <div class="step reveal" style="--d:80ms">
+        <div class="step-num">2</div>
+        <h3>Appairez vos terminaux</h3>
+        <p>Scannez le QR code depuis chaque tablette ou écran cuisine. La connexion est automatique.</p>
+      </div>
+      <div class="step reveal" style="--d:160ms">
+        <div class="step-num">3</div>
+        <h3>Servez</h3>
+        <p>Prise de commande en salle, tickets en cuisine, tout communique instantanément.</p>
+      </div>
+      <div class="step reveal" style="--d:240ms">
+        <div class="step-num">4</div>
+        <h3>Analysez</h3>
+        <p>Consultez vos indicateurs chaque soir et ajustez votre carte et votre organisation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TARIFS ============================ -->
+<section class="section pricing" id="tarifs">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Tarifs</span>
+      <h2>Un prix simple, par restaurant</h2>
+      <p>Tous les modules sont inclus. Pas de frais par utilisateur, pas de surprise.</p>
+    </div>
+
+    <div class="toggle-wrap reveal">
+      <span class="on" id="lbl-month">Mensuel</span>
+      <button class="switch" id="billingSwitch" aria-label="Basculer la facturation"></button>
+      <span id="lbl-year">Annuel</span>
+      <span class="save-pill">-20%</span>
+    </div>
+
+    <div class="plans">
+      <div class="plan reveal">
+        <h3>Essentiel</h3>
+        <p class="desc">Pour les petits établissements qui démarrent.</p>
+        <div class="plan-price">
+          <span class="amount" data-month="29" data-year="23">29</span>
+          <span class="cur">€</span>
+          <span class="per">/ mois</span>
+        </div>
+        <p class="plan-sub">Par restaurant, tout inclus</p>
+        <hr>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Gestion de salle complète</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Prise de commandes sur 2 terminaux</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> 1 écran cuisine</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tableau de bord de base</li>
+        </ul>
+        <button class="btn btn-ghost" data-open-plan="essentiel">Commencer</button>
+      </div>
+
+      <div class="plan featured reveal" style="--d:80ms">
+        <span class="plan-badge">Le plus choisi</span>
+        <h3>Pro</h3>
+        <p class="desc">Pour les restaurants à service complet.</p>
+        <div class="plan-price">
+          <span class="amount" data-month="59" data-year="47">59</span>
+          <span class="cur">€</span>
+          <span class="per">/ mois</span>
+        </div>
+        <p class="plan-sub">Par restaurant, tout inclus</p>
+        <hr>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tout l'Essentiel</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Terminaux illimités</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Écrans cuisine illimités</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Vue administrateur avancée</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Mode hors-ligne &amp; exports</li>
+        </ul>
+        <button class="btn btn-primary" data-open-plan="pro">Démarrer l'essai</button>
+      </div>
+
+      <div class="plan reveal" style="--d:160ms">
+        <h3>Entreprise</h3>
+        <p class="desc">Pour les groupes et franchises multi-établissements.</p>
+        <div class="plan-price">
+          <span class="amount" style="font-size:32px">Sur devis</span>
+        </div>
+        <p class="plan-sub">Accompagnement dédié</p>
+        <hr>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Tout le plan Pro</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Gestion multi-sites centralisée</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Intégrations sur mesure</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Formation sur site &amp; SLA</li>
+        </ul>
+        <button class="btn btn-dark" data-open-plan="entreprise">Parler à un expert</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Questions fréquentes</span>
+      <h2>Vous vous demandez sûrement…</h2>
+    </div>
+
+    <div class="faq-wrap">
+      <div class="faq reveal">
+        <button class="faq-q">Faut-il une connexion internet permanente ?
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Non. RestoFlow fonctionne en mode hors-ligne : les commandes continuent de circuler entre les terminaux et l'écran cuisine, même sans réseau. Dès que la connexion revient, tout se resynchronise automatiquement.</p></div>
+      </div>
+
+      <div class="faq reveal" style="--d:60ms">
+        <button class="faq-q">Sur quels appareils l'application fonctionne-t-elle ?
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Sur n'importe quelle tablette Android ou iPad, ainsi que sur un ordinateur. L'écran cuisine peut être affiché sur une tablette, un moniteur ou une TV connectée. Aucun matériel propriétaire n'est imposé.</p></div>
+      </div>
+
+      <div class="faq reveal" style="--d:120ms">
+        <button class="faq-q">Combien de temps prend la mise en place ?
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>La plupart des restaurants sont opérationnels en une journée : création du plan de salle, import de la carte et appairage des terminaux prennent quelques heures. Nous vous accompagnons gratuitement lors de la configuration initiale.</p></div>
+      </div>
+
+      <div class="faq reveal" style="--d:180ms">
+        <button class="faq-q">Peut-on importer notre carte existante ?
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Oui. Vous pouvez importer votre carte depuis un fichier Excel ou CSV, ou la saisir directement depuis l'interface d'administration. Les catégories, variantes et suppléments sont pris en charge.</p></div>
+      </div>
+
+      <div class="faq reveal" style="--d:240ms">
+        <button class="faq-q">Y a-t-il un engagement de durée ?
+          <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+        </button>
+        <div class="faq-a"><p>Aucun. L'essai de 14 jours est gratuit et sans carte bancaire. Ensuite, l'abonnement est mensuel et résiliable à tout moment depuis votre espace administrateur.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CTA ============================ -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Prêt à simplifier votre service ?</h2>
+      <p>Laissez-nous votre adresse e-mail : nous vous ouvrons un environnement de test avec votre propre carte et votre plan de salle.</p>
+
+      <form class="cta-form" id="ctaForm">
+        <input type="email" placeholder="vous@votre-restaurant.fr" required aria-label="Votre adresse e-mail" />
+        <button type="submit" class="btn btn-primary">Créer mon espace</button>
+      </form>
+      <p class="cta-legal">Sans engagement · Réponse sous 24h ouvrées · Données hébergées en Europe</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo">
+          <span class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 2v7c0 1.1.9 2 2 2h1a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/>
+              <path d="M17 2c-1.7 0-3 1.8-3 4s.8 4 3 4v12"/>
+            </svg>
+          </span>
+          RestoFlow
+        </a>
+        <p class="footer-about">Le logiciel de gestion de restaurant qui relie la salle, la cuisine et l'administration en temps réel.</p>
+      </div>
+
+      <div>
+        <h4>Produit</h4>
+        <ul>
+          <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+          <li><a href="#produit">Gestion de salle</a></li>
+          <li><a href="#produit">Tickets cuisine</a></li>
+          <li><a href="#produit">Terminaux</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="#comment">Déploiement</a></li>
+          <li><a href="#tarifs">Tarifs</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+          <li><a href="#">CGU</a></li>
+          <li><a href="#">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> RestoFlow. Tous droits réservés.</span>
+      <div class="socials">
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9V21H9z"/></svg>
+        </a>
+        <a href="#" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2h3.4l-7.4 8.5L22.7 22h-6.8l-5.3-6.9L4.5 22H1.1l7.9-9.1L1.3 2h6.9l4.8 6.3zm-1.2 18h1.9L6.9 3.9H4.9z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ PARCOURS D'INSCRIPTION ============================ -->
+<div class="onboarding" id="onboarding" role="dialog" aria-modal="true" aria-labelledby="obTitle">
+  <div class="ob-inner">
+
+    <!-- En-tête -->
+    <div class="ob-header">
+      <div class="logo">
+        <span class="logo-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 2v7c0 1.1.9 2 2 2h1a2 2 0 0 0 2-2V2"/><path d="M5 2v20"/>
+            <path d="M17 2c-1.7 0-3 1.8-3 4s.8 4 3 4v12"/>
+          </svg>
+        </span>
+        RestoFlow
+      </div>
+      <button class="ob-close" id="obClose" aria-label="Fermer le parcours">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Progression -->
+    <div class="ob-steps">
+      <div class="ob-step active" data-step="1"><div class="bar"></div><span class="lbl">Formule</span></div>
+      <div class="ob-step" data-step="2"><div class="bar"></div><span class="lbl">Restaurant</span></div>
+      <div class="ob-step" data-step="3"><div class="bar"></div><span class="lbl">Compte</span></div>
+      <div class="ob-step" data-step="4"><div class="bar"></div><span class="lbl">Téléchargement</span></div>
+    </div>
+
+    <!-- Contenu -->
+    <div class="ob-body">
+
+      <!-- ÉTAPE 1 : FORMULE -->
+      <section class="ob-pane active" data-pane="1">
+        <h2 class="ob-title" id="obTitle">Choisissez votre formule</h2>
+        <p class="ob-sub">Tous les modules sont inclus. Vous pourrez changer de formule à tout moment depuis votre espace administrateur.</p>
+
+        <div class="ob-billing">
+          <span class="on" id="obLblMonth">Mensuel</span>
+          <button class="switch" id="obSwitch" aria-label="Basculer la facturation"></button>
+          <span id="obLblYear">Annuel</span>
+          <span class="save-pill">-20%</span>
+        </div>
+
+        <div class="ob-plans" id="obPlans">
+          <button class="ob-plan" data-plan="essentiel" type="button">
+            <span class="ob-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <h3>Essentiel</h3>
+            <p class="ob-plan-desc">Pour démarrer sereinement.</p>
+            <div class="ob-plan-price">
+              <span class="amount" data-month="29" data-year="23">29</span>
+              <span class="per">€ / mois</span>
+            </div>
+            <ul class="ob-plan-feats">
+              <li>Gestion de salle complète</li>
+              <li>2 terminaux</li>
+              <li>1 écran cuisine</li>
+              <li>Tableau de bord de base</li>
+            </ul>
+          </button>
+
+          <button class="ob-plan" data-plan="pro" type="button">
+            <span class="ob-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <h3>Pro</h3>
+            <p class="ob-plan-desc">Pour les restaurants à service complet.</p>
+            <div class="ob-plan-price">
+              <span class="amount" data-month="59" data-year="47">59</span>
+              <span class="per">€ / mois</span>
+            </div>
+            <ul class="ob-plan-feats">
+              <li>Tout l'Essentiel</li>
+              <li>Terminaux illimités</li>
+              <li>Écrans cuisine illimités</li>
+              <li>Vue administrateur avancée</li>
+              <li>Mode hors-ligne &amp; exports</li>
+            </ul>
+          </button>
+
+          <button class="ob-plan" data-plan="entreprise" type="button">
+            <span class="ob-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <h3>Entreprise</h3>
+            <p class="ob-plan-desc">Pour les groupes et franchises.</p>
+            <div class="ob-plan-price" style="font-size:18px">Sur devis</div>
+            <ul class="ob-plan-feats">
+              <li>Tout le plan Pro</li>
+              <li>Gestion multi-sites centralisée</li>
+              <li>Intégrations sur mesure</li>
+              <li>Formation sur site &amp; SLA</li>
+            </ul>
+          </button>
+        </div>
+      </section>
+
+      <!-- ÉTAPE 2 : RESTAURANT -->
+      <section class="ob-pane" data-pane="2">
+        <h2 class="ob-title">Parlez-nous de votre restaurant</h2>
+        <p class="ob-sub">Ces informations nous permettent de préparer un espace de test à votre image.</p>
+
+        <form class="ob-form" id="obFormResto" novalidate>
+          <div class="ob-field full">
+            <label for="obRestoName">Nom du restaurant <span class="req">*</span></label>
+            <input type="text" id="obRestoName" name="name" placeholder="Le Bistrot du Coin" required autocomplete="organization">
+          </div>
+
+          <div class="ob-field full">
+            <label for="obRestoType">Type d'établissement</label>
+            <select id="obRestoType" name="type">
+              <option value="">Sélectionnez…</option>
+              <option>Bistrot</option>
+              <option>Brasserie</option>
+              <option>Restaurant gastronomique</option>
+              <option>Pizzeria</option>
+              <option>Café / Salon de thé</option>
+              <option>Fast-food / Snack</option>
+              <option>Autre</option>
+            </select>
+          </div>
+
+          <div class="ob-field full">
+            <label for="obRestoAddr">Adresse <span class="req">*</span></label>
+            <input type="text" id="obRestoAddr" name="address" placeholder="12 rue de la Paix" required autocomplete="street-address">
+          </div>
+
+          <div class="ob-field">
+            <label for="obRestoZip">Code postal <span class="req">*</span></label>
+            <input type="text" id="obRestoZip" name="zip" placeholder="75002" required inputmode="numeric" autocomplete="postal-code">
+          </div>
+
+          <div class="ob-field">
+            <label for="obRestoCity">Ville <span class="req">*</span></label>
+            <input type="text" id="obRestoCity" name="city" placeholder="Paris" required autocomplete="address-level2">
+          </div>
+
+          <div class="ob-field">
+            <label for="obRestoPhone">Téléphone <span class="req">*</span></label>
+            <input type="tel" id="obRestoPhone" name="phone" placeholder="01 23 45 67 89" required autocomplete="tel">
+          </div>
+
+          <div class="ob-field">
+            <label for="obRestoTables">Nombre de tables</label>
+            <input type="number" id="obRestoTables" name="tables" placeholder="18" min="1" max="500">
+          </div>
+
+          <div class="ob-field">
+            <label for="obRestoTerm">Nombre de terminaux</label>
+            <input type="number" id="obRestoTerm" name="terminals" placeholder="4" min="1" max="100">
+          </div>
+        </form>
+      </section>
+
+      <!-- ÉTAPE 3 : COMPTE -->
+      <section class="ob-pane" data-pane="3">
+        <h2 class="ob-title">Créez votre compte administrateur</h2>
+        <p class="ob-sub">C'est ce compte qui vous donnera accès à la vue d'ensemble de votre restaurant.</p>
+
+        <form class="ob-form" id="obFormAccount" novalidate>
+          <div class="ob-field">
+            <label for="obFirstName">Prénom <span class="req">*</span></label>
+            <input type="text" id="obFirstName" name="firstName" placeholder="Camille" required autocomplete="given-name">
+          </div>
+
+          <div class="ob-field">
+            <label for="obLastName">Nom <span class="req">*</span></label>
+            <input type="text" id="obLastName" name="lastName" placeholder="Durand" required autocomplete="family-name">
+          </div>
+
+          <div class="ob-field full">
+            <label for="obEmail">Email professionnel <span class="req">*</span></label>
+            <input type="email" id="obEmail" name="email" placeholder="camille@bistrot.fr" required autocomplete="email">
+          </div>
+
+          <div class="ob-field">
+            <label for="obPassword">Mot de passe <span class="req">*</span></label>
+            <input type="password" id="obPassword" name="password" placeholder="8 caractères minimum" required minlength="8" autocomplete="new-password">
+            <span class="ob-hint">8 caractères minimum</span>
+          </div>
+
+          <div class="ob-field">
+            <label for="obPassword2">Confirmation <span class="req">*</span></label>
+            <input type="password" id="obPassword2" name="password2" placeholder="Retapez le mot de passe" required minlength="8" autocomplete="new-password">
+            <span class="ob-error" id="obPassErr">Les mots de passe ne correspondent pas.</span>
+          </div>
+
+          <div class="ob-field full">
+            <label class="ob-check-line">
+              <input type="checkbox" id="obCgu" required>
+              <span>J'accepte les <a href="#">conditions générales</a> et la <a href="#">politique de confidentialité</a> de RestoFlow.</span>
+            </label>
+            <span class="ob-error" id="obCguErr">Merci d'accepter les conditions pour continuer.</span>
+          </div>
+
+          <div class="ob-field full">
+            <p class="ob-hint">🔒 Vos données sont hébergées en Europe et ne sont jamais revendues.</p>
+          </div>
+        </form>
+      </section>
+
+      <!-- ÉTAPE 4 : TÉLÉCHARGEMENT -->
+      <section class="ob-pane" data-pane="4">
+        <div class="ob-done">
+          <div class="ob-done-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h2 class="ob-title">Votre espace est prêt 🎉</h2>
+          <p class="ob-sub">Un email de confirmation vient d'être envoyé à <strong id="obEmailOut">votre adresse</strong>. Téléchargez l'application RestoFlow pour commencer.</p>
+        </div>
+
+        <div class="ob-summary" id="obSummary"></div>
+
+        <div class="ob-dl-label">Télécharger l'application</div>
+
+        <div class="ob-downloads">
+          <a href="#" class="dl-btn" data-dl="android">
+            <span class="dl-ic" style="background:#e9f9f2;color:#0f9d6e">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85-.29-.15-.65-.06-.83.22l-1.88 3.24a11.46 11.46 0 0 0-8.94 0L5.65 5.67c-.19-.29-.58-.38-.87-.2-.28.18-.37.54-.22.83L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+            </span>
+            <span class="dl-txt"><strong>Android</strong><span>Google Play Store</span></span>
+          </a>
+
+          <a href="#" class="dl-btn" data-dl="ios">
+            <span class="dl-ic" style="background:#eef1f6;color:#1f2937">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.54c-.03-2.9 2.37-4.3 2.48-4.36-1.35-1.98-3.46-2.25-4.2-2.28-1.79-.18-3.5 1.05-4.4 1.05-.92 0-2.32-1.02-3.82-.99-1.96.03-3.77 1.14-4.78 2.89-2.04 3.54-.52 8.78 1.46 11.65 1 1.4 2.18 2.97 3.74 2.91 1.5-.06 2.07-.96 3.88-.96 1.8 0 2.32.96 3.9.93 1.62-.03 2.64-1.42 3.62-2.83 1.14-1.62 1.6-3.2 1.63-3.28-.04-.02-3.12-1.2-3.15-4.73zM14.16 4.06c.82-1 1.37-2.39 1.22-3.78-1.18.05-2.61.79-3.46 1.79-.76.87-1.43 2.29-1.25 3.65 1.32.1 2.66-.67 3.49-1.66z"/></svg>
+            </span>
+            <span class="dl-txt"><strong>iPhone / iPad</strong><span>App Store</span></span>
+          </a>
+
+          <a href="#" class="dl-btn" data-dl="desktop">
+            <span class="dl-ic" style="background:#eaf2ff;color:#2563eb">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5l7.5-1v7H3v-6zm0 13l7.5 1v-7H3v6zm8.5 1.2l9.5 1.3v-8.5h-9.5v7.2zm0-14.4v7.2H21V3.5l-9.5 1.3z"/></svg>
+            </span>
+            <span class="dl-txt"><strong>Windows / macOS</strong><span>Application bureau</span></span>
+          </a>
+
+          <a href="#" class="dl-btn" data-dl="web">
+            <span class="dl-ic" style="background:#fff4ec;color:var(--accent-dark)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+            </span>
+            <span class="dl-txt"><strong>Version web</strong><span>Ouvrir dans le navigateur</span></span>
+          </a>
+        </div>
+
+        <p class="ob-foot-note">Un souci ? Écrivez-nous à <a href="mailto:hello@restoflow.app">hello@restoflow.app</a>.</p>
+      </section>
+
+    </div>
+
+    <!-- Pied -->
+    <div class="ob-footer">
+      <button class="btn btn-ghost" id="obBack" type="button" style="visibility:hidden">Retour</button>
+      <button class="btn btn-primary" id="obNext" type="button">Continuer</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Firebase SDK (compat) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="./js/script.js"></script>
+
+
+</body>
+</html>
