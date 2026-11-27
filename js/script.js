@@ -129,16 +129,18 @@ const obPlansEls = document.querySelectorAll('.ob-plan');
 const obSwitch = document.getElementById('obSwitch');
 
 /* --- API FastAPI : remplacer par l'URL Cloud Run déployée --- */
-const RESTOFLOW_API_URL = 'https://REMPLACER-PAR-URL-API-FASTAPI';
+const RESTOFLOW_API_URL = 'https://restoflow-fastapi.fly.dev';
 
 /* --- Firebase : configuration à renseigner depuis Firebase Console --- */
+
 const firebaseConfig = {
-  apiKey: "REMPLACER_PAR_API_KEY",
-  authDomain: "REMPLACER_PAR_AUTH_DOMAIN",
-  projectId: "REMPLACER_PAR_PROJECT_ID",
-  storageBucket: "REMPLACER_PAR_STORAGE_BUCKET",
-  messagingSenderId: "REMPLACER_PAR_MESSAGING_SENDER_ID",
-  appId: "REMPLACER_PAR_APP_ID"
+  apiKey: "AIzaSyAKRHzrwAQofVdCiDJiXJ8UCS8kHAKc-N8",
+  authDomain: "servio-78d11.firebaseapp.com",
+  projectId: "servio-78d11",
+  storageBucket: "servio-78d11.firebasestorage.app",
+  messagingSenderId: "297965195337",
+  appId: "1:297965195337:web:9d6ea5c9afcd754d74af98",
+  measurementId: "G-019XYFQBJK"
 };
 
 let firebaseReady = false;
